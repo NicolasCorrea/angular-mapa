@@ -1,28 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
 
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Mapa</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+    <!-- Links -->
+
+    <form class="form-inline">
+      <div class="md-form my-0">
+        <input class="form-control mr-sm-2" type="text" (keyup)="buscar(name.value)" #name placeholder="Search" aria-label="Search">
+      </div>
+    </form>
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
 <div class="container mt-5">
 
-  <!-- <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map> -->
-  <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14]" [center]="[-75.556, 6.24]">
-    <!-- <mgl-marker  [lngLat]="[-75.556, 6.24]">
-     <div class="marker">
-	        Julio
-     </div>
-   </mgl-marker> -->
-   <!-- <mgl-popup [lngLat]="[-75.556, 6.24]" [closeOnClick]="false">
-     <h1>Hello world !</h1>
-   </mgl-popup> -->
-   <div>
-     <mgl-marker [lngLat]="[-75.556, 6.24]" #myMarker anchor="bottom-left" style="position:absolute; top:0; bottom:0; width:100%;">
+
+  <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[4]" [center]="[-75.556, 6.24]">
+
+   <div *ngFor="let item of markers">
+     <mgl-marker [lngLat]="item.LngLat" anchor="bottom-left" style="position:absolute; top:0; bottom:0; width:100%;">
         <div class="marker">
-          Salchicha
+          {{item.name}}
         </div>
       </mgl-marker>
-      <mgl-popup [marker]="myMarker">
-        Hello from marker !
-      </mgl-popup>
     </div>
   </mgl-map>
 </div>
